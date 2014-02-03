@@ -17,9 +17,18 @@
         <link rel="stylesheet" href="css/theme/one-mozilla.css" id="theme">
 
         <!-- For syntax highlighting -->
-        <link rel="stylesheet" href="lib/css/tomorrow.css">
+        <link rel="stylesheet" href="lib/css/hemisu-light.css">
 
         <style type="text/css">
+            .references, .references li {
+                font-size:0.70em;
+            }
+            .reveal .progress span {
+                background-color:#9E3B3B;
+            }
+            .reveal pre code {
+                font-family:Consolas, Inconsolata, monospace;
+            }
             input {
                 font-size:inherit;
                 padding:0.2em;
@@ -81,30 +90,69 @@
                 <section>
                     <h2>The Problem</h2>
                     <div class="live-demo">
-                        <input type="text" placeholder="Name" ng-model="name" />
+                        <input type="text" ng-model="name" />
                         <p>Hello, {{name}}</p>
                     </div>
-                    Plain Ol' JavaScript:
-                    <pre><code data-trim>
+                    <div class="fragment">
+                        Plain Ol' JavaScript:
+                        <pre><code class="html">
+<input type="text" id="my-input-box" />
+<p id="my-label"></p>
+                        </code></pre>
+                        <pre><code class="javascript">
 var myLabel = document.getElementById("my-label");
 var myInput = document.getElementById("my-input-box");
 myInput.addEventListener("change", function() {
     myLabel.innerText = "Hello, " + this.value;
 }, false);
-                    </code></pre>
-                    With jQuery:
-                    <pre><code data-trim>
-var myLabel = $("#my-label");
-$("#my-input-box").change(function() {
-   myLabel.text("Hello, " + this.value());
-});
-                    </code></pre>
+                        </code></pre>
+                    </div>
                 </section>
                 <section>
                     <blockquote>
-                        The business domains we operate in are complex already. 
+                        The business domains we operate in are complex. 
                         We want our tools to remove technical complexity, so we can focus on solving business problems.
                     </blockquote>
+                </section>
+                <section>
+                    <h2>HTML with Angular</h2>
+                    <div class="live-demo">
+                        <input type="text" ng-model="name" />
+                        <p>Hello, {{name}}</p>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="html" ng-non-bindable>
+<input type="text" ng-model="name" />
+<p>Hello, {{name}}</p>
+                        </code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h2>AngularJS's Solution</h2>
+                    <ul>
+                        <li><strong>Model / View / Controller</strong> architecture</li>
+                        <li><strong>Databinding</strong> removes boilerplate "glue code"</li>
+                        <li><strong>Extends HTML</strong> with a vocabulary for dynamic web apps
+                            <ul>
+                                <li>Useful out-of-the-box extensions (called <strong>directives</strong>)</li>
+                                <li>Create your own directives</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>MVC Architecture</h2>
+                    <img src="img/MVC-Process.svg" alt="">
+                </section>
+                <section>
+                    <h2>Angular's MVC Architecture</h2>
+                </section>
+                <section>
+                    <h2>Let's build something!</h2>
+                    <p class="references">References</p>
+                    <ul class="references">
+                        <li>MVC Architecture: http://en.wikipedia.org/wiki/File:MVC-Process.svg</li>
+                    </ul>
                 </section>
             </div>
         </div>
@@ -116,7 +164,7 @@ $("#my-input-box").change(function() {
             // Full list of configuration options available here:
         // https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
-            controls: true,
+            controls: false,
             progress: true,
             history: true,
             center: true,
