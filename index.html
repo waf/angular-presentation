@@ -99,13 +99,13 @@
                     <h2>The Problem</h2>
                     <ul>
                         <li>HTML was originally envisioned for static documents</li>
-                        <li>Adding dynamic behavior with JavaScript is awkward</li>
-                        <li>Complex web apps are hard</li>
+                        <li>Users expect responsive, AJAX-driven websites</li>
+                        <li>Creating large web applications is hard</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h2>The Problem</h2>
+                    <h2>The Problem &ndash; A Demo</h2>
                     <div class="live-demo">
                         <input type="text" ng-model="name" />
                         <p>Hello, {{name}}</p>
@@ -298,6 +298,40 @@ function FavoritesController($scope, $http, $log)
                 </section>
                 <section>
                     <h2>Routing</h2>
+                    <ul>
+                        <li>Not part of "core" angular, but almost every app needs it.</li>
+                        <li>Associates a controller and view with a URL</li>
+                        <li>When a user changes the URL (by clicking a link), the active controller/view changes</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Routing</h2>
+                    <ul style="width:90%">
+                        <li>Add the file <code>angular-route.js</code></li>
+                        <li>Register our controllers:
+                            <pre><code class="javascript" ng-non-bindable data-trim>
+var app = angular.module('favoritesApp', ['ngRoute']);
+app.controller("favoritesController", favoritesController);
+app.controller("mostFavoriteController", mostFavoriteController);
+                            </code></pre>
+                        </li>
+                        <li>
+                            Define the URL mapping:
+                            <pre><code class="javascript" ng-non-bindable data-trim>
+app.config(function($routeProvider) {
+    $routeProvider
+        .when("/favorites", {
+            controller  : 'favoritesController',
+            templateUrl : 'pages/favorites.html'
+        })
+        .when("/most-favorite", {
+            controller  : 'mostFavoriteController',
+            templateUrl : 'pages/most-favorite.html'
+        });
+});
+                            </code></pre>
+                        </li>
+                    </ul>
                 </section>
                 <section>
                     <h2>Let's build something!</h2>
@@ -306,6 +340,7 @@ function FavoritesController($scope, $http, $log)
                     <p class="references">image sources</p>
                     <ul class="references">
                         <li>MVC Architecture: http://en.wikipedia.org/wiki/File:MVC-Process.svg</li>
+                        <li>Diagrams drawn via: https://www.draw.io/</li>
                     </ul>
                 </section>
             </div>
