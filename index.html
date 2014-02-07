@@ -158,7 +158,8 @@ myInput.addEventListener("change", function() {
                 </section>
                 <section>
                     <h2>A Simple Angular App</h2>
-                    <pre><code class="html" ng-non-bindable>&lt;html ng-app&gt;
+                    <pre><code class="html" data-trim ng-non-bindable>
+&lt;html ng-app&gt;
     &lt;head&gt;
         &lt;script src="angular.js"&gt;&lt;/script&gt;
         &lt;script&gt;
@@ -174,12 +175,81 @@ myInput.addEventListener("change", function() {
             &lt;li ng-repeat="item in favoriteThings"&gt;{{item}}&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+                    </code></pre>
                     <div class="arrow fragment" style="top:-17.1em; left: 8em">&#11071; root of our app</div>
-                    <div class="arrow fragment" style="top:-15.1em; left: 22em">&#11071; define a controller in the app</div>
+                    <div class="arrow fragment" style="top:-15.1em; left: 22em">&#11071; define a controller</div>
                     <div class="arrow fragment" style="top:-14.9em; left: 0em">set the model &#10547;</div>
                     <div class="arrow fragment" style="top:-12.9em; left: 21.5em">&#11071; attach controller to view</div>
                     <div class="arrow fragment" style="top:-11.8em; left: 28.5em">&#11071; databind to model</div>
+                </section>
+                <section>
+                    <h2>MVC - The Controller</h2>
+                    Our controller
+                    <pre><code class="javascript" ng-non-bindable data-trim>
+function FavoritesController($scope)
+{
+    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
+}
+                    </code></pre>
+                    <p>Uses <strong>Dependency Injection</strong></p>
+                    <div class="fragment">
+                        <pre><code class="javascript" ng-non-bindable data-trim>
+function FavoritesController($log)
+{
+    $log.debug("now we have logging!");
+}
+                        </code></pre>
+                    </div>
+                    <div class="fragment">
+                    or maybe...
+                        <pre><code class="javascript" ng-non-bindable data-trim>
+function FavoritesController($http)
+{
+    // make an http request!
+    $http.get("/api/favorite-things", function(data) { 
+        ...
+    });
+}
+                        </code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h2>MVC - The Controller</h2>
+                    <h3>Tying it all together</h3>
+                    <pre><code class="javascript" ng-non-bindable data-trim>
+function FavoritesController($scope, $http, $log)
+{
+    $log.debug("Making http request for favorites data...");
+    $http.get("/api/favorite-things", function(favorites) { 
+        $log.debug("...received response from server");
+        $scope.favoriteThings = favorites;
+    });
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>MVC - The Model</h2>
+                    The Model, <code>$scope</code>, holds data for the view:
+                    <pre><code class="javascript" ng-non-bindable data-trim>
+...
+{
+    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
+    $scope.mostFavoriteThing = "The Big Lebowski";
+}
+                    </code></pre>
+                    <div class="fragment">
+                        It can also hold functions for the view to call:
+                        <pre><code class="javascript" ng-non-bindable data-trim>
+...
+{
+    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
+    $scope.addFavorite = function(newFavorite) {
+        $scope.favoriteThings.push(newFavorite);
+    }
+}
+                        </code></pre>
+                    </div>
                 </section>
                 <section>
                     <h2>Let's build something!</h2>
