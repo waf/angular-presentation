@@ -119,7 +119,7 @@
                         <pre><code class="javascript">
 var myInput = document.getElementById("my-input-box");
 var myLabel = document.getElementById("my-label");
-myInput.addEventListener("change", function() {
+myInput.addEventListener("keyup", function() {
     myLabel.innerText = "Hello, " + this.value;
 }, false);
                         </code></pre>
