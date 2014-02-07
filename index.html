@@ -20,6 +20,15 @@
         <link rel="stylesheet" href="lib/css/hemisu-light.css">
 
         <style type="text/css">
+            .reveal .slides section .fragment.strikeout {
+                opacity:1;
+            }
+            .reveal .slides section .fragment.strikeout.visible {
+                text-decoration:line-through;
+            }
+            .reveal button {
+                font-size:100%;
+            }
             .reveal .arrow {
                 position:relative;
                 text-align:left;
@@ -140,17 +149,13 @@ myInput.addEventListener("change", function() {
                     <ul>
                         <li><strong>Model / View / Controller</strong> architecture</li>
                         <li><strong>Databinding</strong> removes boilerplate "glue code"</li>
-                        <li><strong>Extends HTML</strong> with a vocabulary for dynamic web apps
-                            <ul>
-                                <li>Useful out-of-the-box extensions (called <strong>directives</strong>)</li>
-                                <li>Create your own directives</li>
-                            </ul>
-                        </li>
+                        <li><strong>Extends HTML</strong> with a vocabulary for dynamic web apps</li>
                     </ul>
                 </section>
                 <section>
                     <h2>MVC Architecture</h2>
                     <img src="img/MVC-Process.svg" alt="">
+                    <p>
                 </section>
                 <section>
                     <h2>Angular's MVC Architecture</h2>
@@ -230,7 +235,7 @@ function FavoritesController($scope, $http, $log)
                 </section>
                 <section>
                     <h2>MVC - The Model</h2>
-                    The Model, <code>$scope</code>, holds data for the view:
+                    The model, <code>$scope</code>, holds data for the view:
                     <pre><code class="javascript" ng-non-bindable data-trim>
 ...
 {
@@ -250,10 +255,55 @@ function FavoritesController($scope, $http, $log)
 }
                         </code></pre>
                     </div>
+                    <div class="fragment">
+                        let's call this function from a view...
+                    </div>
+                </section>
+                <section>
+                    <h2>MVC - The View</h2>
+                    <pre><code class="html" ng-non-bindable data-trim>
+&lt;ul&gt;
+    &lt;li ng-repeat="item in favoriteThings"&gt;{{item}}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;input type="text" ng-model="newFavorite" /&gt;
+&lt;button ng-click="addFavorite(newFavorite)"&gt;Add&lt;/button&gt;
+                    </code></pre>
+                    <script>
+                        function FavoritesController($scope)
+                        {
+                            $scope.favoriteThings = [];
+                            $scope.addFavorite = function(newFavorite) {
+                                $scope.favoriteThings.push(newFavorite);
+                            }
+                        }
+                    </script>
+                    <div ng-controller="FavoritesController" style="width:90%">
+                        <ul>
+                            <li ng-repeat="item in favoriteThings">{{item}}</li>
+                        </ul>
+                        <div>
+                            <input type="text" ng-model="newFavorite" />
+                            <button ng-click="addFavorite(newFavorite)" style="padding:0.2em 1em">Add</button>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>AngularJS's Solution</h2>
+                    <ul>
+                        <li class="fragment strikeout"><strong>Model / View / Controller</strong> architecture</li>
+                        <li class="fragment strikeout"><strong>Databinding</strong> removes boilerplate "glue code"</li>
+                        <li class="fragment strikeout"><strong>Extends HTML</strong> with a vocabulary for dynamic web apps</li>
+                        <li class="fragment roll-in"><strong>Routing!</strong> - move between controllers</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Routing</h2>
                 </section>
                 <section>
                     <h2>Let's build something!</h2>
-                    <p class="references">References</p>
+                </section>
+                <section>
+                    <p class="references">image sources</p>
                     <ul class="references">
                         <li>MVC Architecture: http://en.wikipedia.org/wiki/File:MVC-Process.svg</li>
                     </ul>
