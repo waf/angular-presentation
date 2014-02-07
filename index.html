@@ -20,6 +20,14 @@
         <link rel="stylesheet" href="lib/css/hemisu-light.css">
 
         <style type="text/css">
+            .reveal .arrow {
+                position:relative;
+                text-align:left;
+                font-size:0.7em;
+                color:#9E3B3B;
+                color:#FF5E99;
+                font-weight:bold;
+            }
             .references, .references li {
                 font-size:0.70em;
             }
@@ -100,8 +108,8 @@
 <p id="my-label"></p>
                         </code></pre>
                         <pre><code class="javascript">
-var myLabel = document.getElementById("my-label");
 var myInput = document.getElementById("my-input-box");
+var myLabel = document.getElementById("my-label");
 myInput.addEventListener("change", function() {
     myLabel.innerText = "Hello, " + this.value;
 }, false);
@@ -147,6 +155,31 @@ myInput.addEventListener("change", function() {
                 <section>
                     <h2>Angular's MVC Architecture</h2>
                     <img src="img/angular-mvc.svg" style="width:90%" alt="">
+                </section>
+                <section>
+                    <h2>A Simple Angular App</h2>
+                    <pre><code class="html" ng-non-bindable>&lt;html ng-app&gt;
+    &lt;head&gt;
+        &lt;script src="angular.js"&gt;&lt;/script&gt; 
+        &lt;script&gt;
+            function FavoritesController($scope)
+            {
+                $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body ng-controller="FavoritesController"&gt;
+        &lt;h1&gt;My Favorite Things&lt;/h1&gt;
+        &lt;ul&gt;
+            &lt;li ng-repeat="item in favoriteThings"&gt;{{item}}&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <div class="arrow fragment" style="top:-17.1em; left: 8em">&#11071; root of our app</div>
+                    <div class="arrow fragment" style="top:-15.1em; left: 22em">&#11071; define a controller in the app</div>
+                    <div class="arrow fragment" style="top:-14.9em; left: 0em">set the model &#10547;</div>
+                    <div class="arrow fragment" style="top:-12.9em; left: 21.5em">&#11071; attach controller to view</div>
+                    <div class="arrow fragment" style="top:-11.8em; left: 28.5em">&#11071; databind to model</div>
                 </section>
                 <section>
                     <h2>Let's build something!</h2>
