@@ -212,7 +212,7 @@ function FavoritesController($log)
 function FavoritesController($http)
 {
     // make an http request!
-    $http.get("/api/favorite-things", function(data) { 
+    $http.get("/api/favorite-things").success(function(data) { 
         ...
     });
 }
