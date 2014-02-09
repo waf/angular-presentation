@@ -226,7 +226,7 @@ function FavoritesController($http)
 function FavoritesController($scope, $http, $log)
 {
     $log.debug("Making http request for favorites data...");
-    $http.get("/api/favorite-things", function(favorites) { 
+    $http.get("/api/favorite-things").success(function(favorites) { 
         $log.debug("...received response from server");
         $scope.favoriteThings = favorites;
     });
