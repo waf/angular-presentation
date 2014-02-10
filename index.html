@@ -305,35 +305,6 @@ function FavoritesController($scope, $http, $log)
                     </ul>
                 </section>
                 <section>
-                    <h2>Routing</h2>
-                    <ul style="width:90%">
-                        <li>Add the file <code>angular-route.js</code></li>
-                        <li>Register our controllers:
-                            <pre><code class="javascript" ng-non-bindable data-trim>
-var app = angular.module('favoritesApp', ['ngRoute']);
-app.controller("favoritesController", favoritesController);
-app.controller("mostFavoriteController", mostFavoriteController);
-                            </code></pre>
-                        </li>
-                        <li>
-                            Define the URL mapping:
-                            <pre><code class="javascript" ng-non-bindable data-trim>
-app.config(function($routeProvider) {
-    $routeProvider
-        .when("/favorites", {
-            controller  : 'favoritesController',
-            templateUrl : 'pages/favorites.html'
-        })
-        .when("/most-favorite", {
-            controller  : 'mostFavoriteController',
-            templateUrl : 'pages/most-favorite.html'
-        });
-});
-                            </code></pre>
-                        </li>
-                    </ul>
-                </section>
-                <section>
                     <h2>Let's build something!</h2>
                 </section>
                 <section>
