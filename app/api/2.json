@@ -1,0 +1,10 @@
+{
+    "id":2,
+    "name": "Fedora",
+    "description":"The Fedora Project is an openly-developed project designed by Red Hat, open for general participation, led by a meritocracy, following a set of project objectives. The goal of The Fedora Project is to work with the Linux community to build a complete, general purpose operating system exclusively from open source software. Development will be done in a public forum. The project will produce time-based releases of Fedora about 2-3 times a year, with a public release schedule. The Red Hat engineering team will continue to participate in building Fedora and will invite and encourage more outside participation than in past releases. By using this more open process, we hope to provide an operating system more in line with the ideals of free software and more appealing to the open source community.",
+    "url": "http://fedoraproject.org/",
+    "logo": "img/fedora.png",
+    "screenshot": "img/fedora_screen.png",
+    "summary": "Fedora (formerly Fedora Core) is an operating system based on the Linux kernel, developed by the community-supported Fedora Project and owned by Red Hat.",
+    "hits": 1422
+}

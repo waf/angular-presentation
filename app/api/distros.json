@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "name": "Ubuntu",
+        "logo": "img/ubuntu.png",
+        "summary": "Ubuntu is a Debian-based Linux operating system, with Unity as its default desktop environment (formerly GNOME). Development of Ubuntu is led by Canonical Ltd."
+    },
+        
+    {
+        "id":2,
+        "name": "Fedora",
+        "logo": "img/fedora.png",
+        "summary": "Fedora (formerly Fedora Core) is an operating system based on the Linux kernel, developed by the community-supported Fedora Project and owned by Red Hat."
+    },
+    {
+        "id":3,
+        "name": "openSUSE",
+        "logo": "img/opensuse.png",
+        "summary": "openSUSE is a general purpose operating system built on top of the Linux kernel, developed by the community-supported openSUSE Project and sponsored by SUSE and a number of other companies."
+
+    },
+    {
+        "id":4,
+        "name": "Arch Linux",
+        "logo": "img/arch.png",
+        "summary": "Arch Linux is a Linux-based operating system for i686 and x86-64 computers. The design approach of the development team focuses on elegance, code correctness, minimalism, and simplicity."
+    },
+    {
+        "id":5,
+        "name": "Debian",
+        "logo": "img/debian.png",
+        "summary": "Debian is an operating system composed of free software mostly carrying the GNU General Public License. The operating system is developed by an internet collaboration of volunteers aligned with The Debian Project."
+    }
+]

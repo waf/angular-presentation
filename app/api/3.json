@@ -1,0 +1,10 @@
+{
+    "id":3,
+    "name": "openSUSE",
+    "description":"The openSUSE project is a community program sponsored by Novell. Promoting the use of Linux everywhere, this program provides free, easy access to openSUSE, a complete Linux distribution. The openSUSE project has three main goals: make openSUSE the easiest Linux for anyone to obtain and the most widely used Linux distribution; leverage open source collaboration to make openSUSE the world's most usable Linux distribution and desktop environment for new and experienced Linux users; dramatically simplify and open the development and packaging processes to make openSUSE the platform of choice for Linux developers and software vendors.",
+    "url": "http://www.opensuse.org/",
+    "logo": "img/opensuse.png",
+    "screenshot": "img/opensuse_screen.png",
+    "summary": "openSUSE is a general purpose operating system built on top of the Linux kernel, developed by the community-supported openSUSE Project and sponsored by SUSE and a number of other companies.",
+    "hits": 1357
+}

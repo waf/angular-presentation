@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="distrowatch">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script/angular.min.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("distrowatch", [
+            "ngRoute"
+        ]);
+
+        app.config(function($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    controller: "DistroListController",
+                    templateUrl: "templates/distrolist.html"
+                })
+                .when("/distro/:id", {
+                    controller: "DistroController",
+                    templateUrl: "templates/distro.html"
+                });
+        });
+
+        app.controller("DistroListController", function ($scope, $http) {
+            $http.get("/api/distros/").success(function(distros) {
+                $scope.distros = distros;
+            });
+        });
+
+        app.controller("DistroController", function ($scope, $http, $routeParams) {
+            $http.get("/api/distros/" + $routeParams.id).success(function(distro) {
+                $scope.distro = distro;
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <h1>MUG Distrowatch</h1>
+    <div ng-view>
+    </div>
+</body>
+</html>

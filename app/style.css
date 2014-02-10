@@ -1,0 +1,42 @@
+img {
+    display:block;
+    width:400px;
+    margin-right:10px;
+}
+body {
+    font-family:Droid Sans;
+}
+h2 + p {
+    text-align:center;
+}
+h2 {
+    text-align:center;
+}
+.distro {
+    overflow:auto;
+}
+.distro img {
+    float:left;
+    width:auto;
+    box-sizing:border-box;
+    display:table-cell;
+    margin:0 20px;
+    height:80px;
+}
+.distro p {
+    text-align:left;
+    display:table-cell;
+    vertical-align:middle;
+    height:80px;
+}
+.distro h2 {
+    text-align:left;
+    background-color:#222;
+    color:#fff;
+    font-size:10pt;
+    padding:10px;
+}
+.distro a {
+    display:block;
+    text-align:right;
+}

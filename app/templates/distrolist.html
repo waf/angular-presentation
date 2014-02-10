@@ -1,0 +1,6 @@
+<div class="distro" ng-repeat="distro in distros">
+    <h2>{{distro.name}}</h2>
+    <img src="{{distro.logo}}" alt="" />
+    <p>{{distro.summary}}</p>
+    <a href="#/distro/{{distro.id}}">Read more...</a>
+</div>
