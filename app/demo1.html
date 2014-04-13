@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src='angular.min.js'></script>
+    <script>
+        var app = angular.module('favorites-app', []);
+        app.controller('FavoritesController', function($scope) {
+            $scope.favoriteThings = ['JavaScript', '.NET', 'Unicorns'];
+        });
+    </script>
+</head>
+<body ng-app='favorites-app' ng-controller='FavoritesController'>
+    <h1>My Favorite Things</h1>
+    <ul>
+        <li ng-repeat="favorite in favoriteThings">{{favorite}}</li>
+    </ul>
+</body>
+</html>

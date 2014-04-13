@@ -2,23 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-
         <title>AngularJS</title>
-
         <meta name="description" content="AngularJS">
         <meta name="author" content="Will Fuqua">
-
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
         <link rel="stylesheet" href="css/reveal.min.css">
         <link rel="stylesheet" href="css/theme/one-mozilla.css" id="theme">
-
         <!-- For syntax highlighting -->
         <link rel="stylesheet" href="lib/css/hemisu-light.css">
-
         <style type="text/css">
             .reveal .slides section .fragment.strikeout {
                 opacity:1;
@@ -30,9 +23,9 @@
                 font-size:100%;
             }
             .reveal .arrow {
-                position:relative;
+                position:absolute;
                 text-align:left;
-                font-size:0.7em;
+                font-size:0.6em;
                 color:#9E3B3B;
                 color:#FF5E99;
                 font-weight:bold;
@@ -77,7 +70,6 @@
         <script>
             document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
-
         <!--[if lt IE 9]>
         <script src="lib/js/html5shiv.js"></script>
         <![endif]-->
@@ -91,7 +83,7 @@
                 <section>
                     <img style="width:60%;margin-bottom:2em" src="img/AngularJS-large.png" />
                     <p>
-                    <small>Will Fuqua | Michigan!/usr/group | February 2014</small>
+                    <small>Will Fuqua | Bangkok .NET Users Group | April 2014</small>
                     </p>
                 </section>
 
@@ -148,68 +140,72 @@ myInput.addEventListener("keyup", function() {
                 </section>
                 <section>
                     <h2>MVC Architecture</h2>
-                    <img src="img/MVC-Process.svg" alt="">
-                    <p>
+                    <img src="img/MVC.svg" style="width:50%" alt="">
                 </section>
                 <section>
                     <h2>Angular's MVC Architecture</h2>
-                    <img src="img/angular-mvc.svg" style="width:90%" alt="">
+                    <img src="img/angular-mvc.svg" style="width:70%" alt="">
                 </section>
                 <section>
                     <h2>A Simple Angular App</h2>
                     <pre><code class="html" data-trim ng-non-bindable>
-&lt;html ng-app&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app="favorites-app"&gt;
     &lt;head&gt;
-        &lt;script src="angular.js"&gt;&lt;/script&gt;
+        &lt;script src="angular.min.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-            function FavoritesController($scope)
-            {
-                $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
-            }
+            var app = angular.module('favorites-app', []);
+            app.controller('FavoritesController', function($scope) {
+                $scope.favoriteThings = ['JavaScript', '.NET', 'Unicorns'];
+            });
         &lt;/script&gt;
     &lt;/head&gt;
     &lt;body ng-controller="FavoritesController"&gt;
         &lt;h1&gt;My Favorite Things&lt;/h1&gt;
         &lt;ul&gt;
-            &lt;li ng-repeat="item in favoriteThings"&gt;{{item}}&lt;/li&gt;
+            &lt;li ng-repeat="favorite in favoriteThings"&gt;{{favorite}}&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-                    </code></pre>
+                </code></pre>
+                    <div class="arrow fragment" style="top:12.5em; left:-3.5em;">Create root module &#8594;</div>
+                    <div class="arrow fragment" style="top:13.6em; left:-3.1em;">Define a controller &#8594;</div>
+                    <div class="arrow fragment" style="top:14.7em; left:-0.8em">Set the model &#8594;</div>
+                    <div class="arrow fragment" style="top:8.3em; left:17.2em">&#8592; Reference our root module</div>
+                    <div class="arrow fragment" style="top:19.0em; left:25.5em">&#8592; Reference our controller</div>
+                    <div class="arrow fragment" style="top:22.2em; left:-3.1em">Databind to model &#8594;</div>
+                    <!--
                     <div class="arrow fragment" style="top:-17.1em; left: 8em">&#11071; root of our app</div>
                     <div class="arrow fragment" style="top:-15.1em; left: 22em">&#11071; define a controller</div>
-                    <div class="arrow fragment" style="top:-14.9em; left: 0em">set the model &#10547;</div>
                     <div class="arrow fragment" style="top:-12.9em; left: 21.5em">&#11071; attach controller to view</div>
                     <div class="arrow fragment" style="top:-11.8em; left: 28.5em">&#11071; databind to model</div>
+                    -->
                 </section>
                 <section>
                     <h2>MVC - The Controller</h2>
                     Our controller
                     <pre><code class="javascript" ng-non-bindable data-trim>
-function FavoritesController($scope)
-{
-    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
-}
+app.controller('FavoritesController', function($scope) {
+    $scope.favoriteThings = ['JavaScript', '.NET', 'Unicorns'];
+});
                     </code></pre>
                     <p>Uses <strong>Dependency Injection</strong></p>
                     <div class="fragment">
                         <pre><code class="javascript" ng-non-bindable data-trim>
-function FavoritesController($log)
-{
-    $log.debug("now we have logging!");
-}
+app.controller('FavoritesController', function($log) {
+    $log.debug('now we have logging!');
+});
                         </code></pre>
                     </div>
                     <div class="fragment">
                     or maybe...
                         <pre><code class="javascript" ng-non-bindable data-trim>
-function FavoritesController($http)
-{
+app.controller('FavoritesController', function($log) {
     // make an http request!
-    $http.get("/api/favorite-things").success(function(data) { 
+    $http.get('/api/favorite-things').success(function(data) { 
         ...
     });
-}
+});
                         </code></pre>
                     </div>
                 </section>
@@ -217,14 +213,13 @@ function FavoritesController($http)
                     <h2>MVC - The Controller</h2>
                     <h3>Tying it all together</h3>
                     <pre><code class="javascript" ng-non-bindable data-trim>
-function FavoritesController($scope, $http, $log)
-{
-    $log.debug("Making http request for favorites data...");
-    $http.get("/api/favorite-things").success(function(favorites) { 
-        $log.debug("...received response from server");
+app.controller('FavoritesController', function($scope, $http, $log) {
+    $log.debug('Making http request...');
+    $http.get('/api/favorite-things').success(function(favorites) { 
+        $log.debug('...received response');
         $scope.favoriteThings = favorites;
     });
-}
+});
                     </code></pre>
                 </section>
                 <section>
@@ -233,8 +228,8 @@ function FavoritesController($scope, $http, $log)
                     <pre><code class="javascript" ng-non-bindable data-trim>
 ...
 {
-    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
-    $scope.mostFavoriteThing = "The Big Lebowski";
+    $scope.favoriteThings = ["C#", "AngularJS"];
+    $scope.mostFavoriteThing = "Caffeine";
 }
                     </code></pre>
                     <div class="fragment">
@@ -242,7 +237,7 @@ function FavoritesController($scope, $http, $log)
                         <pre><code class="javascript" ng-non-bindable data-trim>
 ...
 {
-    $scope.favoriteThings = ["linux", "angularjs", "unicorns"];
+    $scope.favoriteThings = ["C#", "AngularJS"];
     $scope.addFavorite = function(newFavorite) {
         $scope.favoriteThings.push(newFavorite);
     }
@@ -257,7 +252,7 @@ function FavoritesController($scope, $http, $log)
                     <h2>MVC - The View</h2>
                     <pre><code class="html" ng-non-bindable data-trim>
 &lt;ul&gt;
-    &lt;li ng-repeat="item in favoriteThings"&gt;{{item}}&lt;/li&gt;
+    &lt;li ng-repeat="favorite in favoriteThings"&gt;{{favorite}}&lt;/li&gt;
 &lt;/ul&gt;
 &lt;input type="text" ng-model="newFavorite" /&gt;
 &lt;button ng-click="addFavorite(newFavorite)"&gt;Add&lt;/button&gt;
@@ -304,7 +299,6 @@ function FavoritesController($scope, $http, $log)
                 <section>
                     <p class="references">image sources</p>
                     <ul class="references">
-                        <li>MVC Architecture: http://en.wikipedia.org/wiki/File:MVC-Process.svg</li>
                         <li>Diagrams drawn via: https://www.draw.io/</li>
                     </ul>
                 </section>
