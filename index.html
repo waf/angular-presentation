@@ -200,7 +200,7 @@ app.controller('FavoritesController', function($log) {
                     <div class="fragment">
                     or maybe...
                         <pre><code class="javascript" ng-non-bindable data-trim>
-app.controller('FavoritesController', function($log) {
+app.controller('FavoritesController', function($http) {
     // make an http request!
     $http.get('/api/favorite-things').success(function(data) { 
         ...
