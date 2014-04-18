@@ -1,0 +1,17 @@
+﻿<select ng-model="selectedDeparture" ng-options="item.code as item.name for item in departures">
+    <option value=""></option>
+</select>
+<select ng-model="selectedDestination" ng-options="item.code as item.name for item in destinations">
+    <option value=""></option>
+</select>
+<button ng-click="getFlights()">Search!</button>
+<div class="flight" ng-repeat="flight in flights | orderBy: 'price'" ng-animate="'animate'">
+    <h2>{{flight.departureAirport.code}} &rArr; {{flight.destinationAirport.code}}</h2>
+    <div class="price">${{flight.price}}</div>
+    <div class="flight-details">
+        <p>Departs from {{flight.departureAirport.name}} at <strong>{{flight.departureTime | date: 'short'}}</strong></p>
+        <p>Arrives at {{flight.destinationAirport.name}} at <strong>{{flight.arrivalTime | date: 'short'}}</strong></p>
+        <p>Seat: {{flight.seat}}, <span ng-if="!flight.mealProvided">No</span> Meal Provided</p>
+        <a ng-href="#/flight/{{flight.id}}">Purchase</a>
+    </div>
+</div>

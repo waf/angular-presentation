@@ -1,0 +1,50 @@
+﻿body {
+    overflow-y:scroll;
+    font-family: "Segoe UI", Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    color: #333;
+    max-width: 900px; 
+    margin: 1em auto;
+}
+select {
+    width:44%;
+}
+select, button {
+    font-size:1.2em;
+    padding-top:4px;
+    padding-bottom:4px;
+}
+button {
+    outline:none;
+    padding-left:10px;
+    padding-right:10px;
+
+    background: linear-gradient(to bottom, #d2ff52 0%,#91e842 100%);
+    border:1px solid #808080;
+    border-radius:2px;
+    font-size: 1.2em;
+}
+.price {
+    float:left;
+    width:120px;
+    font-size:24pt;
+    text-align:center;
+    line-height:90px;
+    color:#4cff00;
+}
+.flight-details {
+    margin-left:130px;
+}
+.flight {
+    border-bottom:1px solid #bbb;
+    position:relative;
+}
+
+.flight a {
+    position:absolute;
+    top:50%;
+    right:0;
+}
+.flight a::after {
+    content:" »";
+}
